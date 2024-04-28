@@ -40,7 +40,6 @@ export class DetailComponent implements OnInit, OnDestroy {
               value: participation.medalsCount
             }))
           }];
-          console.log(this.chartData);
         }),
         catchError((error, caught) => {
           this.error = true;
