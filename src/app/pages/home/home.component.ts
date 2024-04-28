@@ -1,11 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {map, Subscription} from 'rxjs';
 import {OlympicService} from 'src/app/core/services/olympic.service';
-
-interface OlympicsChartData {
-  name: string,
-  value: number
-}
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -13,12 +9,12 @@ interface OlympicsChartData {
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  public chartData: OlympicsChartData[] = [];
+  public chartData: ChartData[] = [];
   public numberOfOlympicGames = 0;
 
   private olympicsSubscription: Subscription | undefined;
 
-  constructor(private olympicService: OlympicService) {
+  constructor(private olympicService: OlympicService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -36,6 +32,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.olympicsSubscription?.unsubscribe();
+  }
+
+  onSelect(event: ChartData): void {
+    void this.router.navigate(['/', event.name])
   }
 
 }
