@@ -1,9 +1,29 @@
-<h2>Olympic games app</h2>
-<hr />
-<p>{{ (olympics$ | async)?.length }} data loaded</p>
-<ngx-charts-pie-chart
-        [view]="[700, 400]"
-        [results]="data"
-        [labels]="true"
->
-</ngx-charts-pie-chart>
+<div class="container">
+    <h2 class="page-title">Medals per country</h2>
+    <div class="statistics">
+        <div class="statistics-item">
+            <p class="statistics-item-title">Number of JOs</p>
+            <p class="statistics-item-value">{{ numberOfOlympicGames }}</p>
+        </div>
+        <div class="statistics-item">
+            <p class="statistics-item-title">Number of countries</p>
+            <p class="statistics-item-value">{{ chartData.length }}</p>
+        </div>
+    </div>
+    <ngx-charts-pie-chart
+            [view]="[700, 400]"
+            [results]="chartData"
+            [labels]="true"
+    >
+        <ng-template #tooltipTemplate let-model="model">
+            <div class="chart-tooltip">
+                <p>{{ model.name }}</p>
+                <p>
+                    <mat-icon aria-hidden="false" aria-label="Example home icon">military_tech</mat-icon>
+                    <span>{{ model.value }}</span>
+                </p>
+            </div>
+        </ng-template>
+    </ngx-charts-pie-chart>
+
+</div>
