@@ -10,20 +10,19 @@
             <p class="statistics-item-value">{{ chartData.length }}</p>
         </div>
     </div>
-    <ngx-charts-pie-chart
-            [view]="[700, 400]"
-            [results]="chartData"
-            [labels]="true"
-    >
-        <ng-template #tooltipTemplate let-model="model">
-            <div class="chart-tooltip">
-                <p>{{ model.name }}</p>
-                <p>
-                    <mat-icon aria-hidden="false" aria-label="Example home icon">military_tech</mat-icon>
-                    <span>{{ model.value }}</span>
-                </p>
-            </div>
-        </ng-template>
-    </ngx-charts-pie-chart>
+    <div class="chart-wrapper">
+        <ngx-charts-pie-chart
+                [results]="chartData"
+                [labels]="true"
+                (select)="onSelect($event)"
+        >
+            <ng-template #tooltipTemplate let-model="model">
+                <div class="chart-tooltip">
+                    <p>{{ model.name }}</p>
+                    <p>🎖️ {{ model.value }}</p>
+                </div>
+            </ng-template>
+        </ngx-charts-pie-chart>
+    </div>
 
 </div>

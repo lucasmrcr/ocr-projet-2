@@ -1,0 +1,30 @@
+<div class="container">
+    <h2 class="page-title">{{ country }}</h2>
+    <p *ngIf="loading" class="info">Chargement des données...</p>
+    <p *ngIf="error" class="error">Une erreur est survenue au chargement des données.</p>
+    <div class="statistics">
+        <div class="statistics-item">
+            <p class="statistics-item-title">Number of entries</p>
+            <p class="statistics-item-value">{{ entries }}</p>
+        </div>
+        <div class="statistics-item">
+            <p class="statistics-item-title">Total number medals</p>
+            <p class="statistics-item-value">{{ medals }}</p>
+        </div>
+        <div class="statistics-item">
+            <p class="statistics-item-title">Total number of athletes</p>
+            <p class="statistics-item-value">{{ athletes }}</p>
+        </div>
+    </div>
+
+    <div class="chart-wrapper">
+        <ngx-charts-line-chart
+                [showXAxisLabel]="true"
+                [xAxis]="true"
+                [yAxis]="true"
+                xAxisLabel="Dates"
+                [results]="chartData">
+        </ngx-charts-line-chart>
+    </div>
+    <a routerLink="/">Retour à l'accueil</a>
+</div>
