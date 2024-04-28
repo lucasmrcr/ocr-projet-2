@@ -1,29 +1,11 @@
-# OlympicGamesStarter
+Ce projet répond aux besoins de TéléSport concernant les jeux olympiques.
+Cette application nous permet d'avoir des statistiques sous forme de graphique sur les jeux olympiques précédents.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.3.
+Pour lancer l'application il faut suivre les étapes suivantes :
 
-Don't forget to install your node_modules before starting (`npm install`).
+# Environnement de développement
+La commande `npm start` permet de lancer un environnement de développement. Celui-ci offre l'avantage de supporter le hot reload.
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Where to start
-
-As you can see, an architecture has already been defined for the project. It is just a suggestion, you can choose to use your own. The predefined architecture includes (in addition to the default angular architecture) the following:
-
-- `components` folder: contains every reusable components
-- `pages` folder: contains components used for routing
-- `core` folder: contains the business logic (`services` and `models` folders)
-
-I suggest you to start by understanding this starter code. Pay an extra attention to the `app-routing.module.ts` and the `olympic.service.ts`.
-
-Once mastered, you should continue by creating the typescript interfaces inside the `models` folder. As you can see I already created two files corresponding to the data included inside the `olympic.json`. With your interfaces, improve the code by replacing every `any` by the corresponding interface.
-
-You're now ready to implement the requested features.
-
-Good luck!
+> Vous pouvez rajouter --host 0.0.0.0 à la suite de `ng serve` dans le fichier `package.json` qui permet de lancer le serveur web de développement sur toutes vos interfaces réseaux. Ceci vous permet de pouvoir tester votre application sur les appareils connectés à votre réseau, vous pouvez donc tester sur un téléphone.
+# Production
+Pour un environnement de production, il faut d'abord build l'application avec `npm build`. Ensuite il suffit de déposer les fichiers générés sur un serveur web ou d'ouvrir le fichier index.html.
