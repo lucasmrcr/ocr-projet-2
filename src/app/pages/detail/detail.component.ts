@@ -30,9 +30,16 @@ export class DetailComponent implements OnInit, OnDestroy {
         map(olympic => {
           this.loading = false;
           if (!olympic) return;
+          // number of participations
           this.entries = olympic.participations.length;
+
+          // number of medals won by the country at all games
           this.medals = olympic.participations.reduce((acc, participation) => acc + participation.medalsCount, 0);
+
+          // number of athletes at all games
           this.athletes = olympic.participations.reduce((acc, participation) => acc + participation.athleteCount, 0);
+
+          // Transform data to match to the chart lib requirements
           this.chartData = [{
             name: 'Nombre de médailles par jeu',
             series: olympic.participations.map(participation => ({
@@ -51,6 +58,7 @@ export class DetailComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    // Unsubscribe when component is destroyed so that it can't produce memory leaks or side effects
     this.olympicSubscription?.unsubscribe();
   }
 

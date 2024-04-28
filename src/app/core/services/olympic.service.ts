@@ -9,6 +9,7 @@ import Olympic from '../models/Olympic';
 })
 export class OlympicService {
   private olympicUrl = './assets/mock/olympic.json';
+  // Define olympics$ as an array so that when error occurs data can still be computed
   private olympics$ = new BehaviorSubject<Olympic[]>([]);
 
   constructor(private http: HttpClient) {}
@@ -29,6 +30,7 @@ export class OlympicService {
   }
 
   getOlympicsByCountry(country: string) {
+    // filter countries on specified country in argument
     return this.getOlympics().pipe(map(olympics => olympics.find(olympic => olympic.country === country)))
   }
 }

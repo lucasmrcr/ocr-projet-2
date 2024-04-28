@@ -19,11 +19,14 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.olympicsSubscription = this.olympicService.getOlympics().pipe(map(olympics => {
+      // Transform data to match to the chart lib requirements
       this.chartData = olympics.map(olympic => ({
         name: olympic.country,
         value: olympic.participations.reduce((acc, participation) => acc + participation.medalsCount, 0)
       }));
 
+      // Calculate number of olympic games by taking size of a set where is stored all participation years.
+      // The set assures us that there is no duplicate
       this.numberOfOlympicGames = olympics
         .flatMap(olympic => olympic.participations)
         .reduce((acc, participation) => new Set([...acc, participation.year]), new Set<number>()).size;
@@ -31,6 +34,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    // Unsubscribe when component is destroyed so that it can't produce memory leaks or side effects
     this.olympicsSubscription?.unsubscribe();
   }
 
