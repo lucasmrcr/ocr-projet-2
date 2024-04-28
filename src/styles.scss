@@ -1,1 +1,60 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+
+* {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: 400;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.page-title {
+  width: fit-content;
+  padding: 1rem;
+  background: rgb(4, 131, 143);
+  color: #ffffff;
+  text-align: center;
+  border-radius: 1rem;
+}
+
+.statistics {
+  display: flex;
+  gap: 1rem;
+}
+
+.statistics-item {
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 2px solid rgb(4, 131, 143);
+}
+
+.statistics-item-title, .statistics-item-value {
+  margin: 0;
+  text-align: center;
+}
+
+.statistics-item-title {
+  color: #686868;
+}
+
+.statistics-item-value {
+  font-weight: 700;
+}
+
+.chart-tooltip p {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ngx-charts-tooltip-content.type-tooltip {
+  background-color: rgb(4, 131, 143) !important;
+
+  .tooltip-caret.position-top {
+    border-top-color: rgb(4, 131, 143) !important;
+  }
+}
